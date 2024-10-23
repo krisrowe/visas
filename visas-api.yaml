@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: US Immigration Visa Decision Prediction API
+  version: 1.0.0
+  description: API to predict the number of days to a decision for a U.S. immigration visa application.
+
+servers:
+  - url: $URL # Placeholder for your actual API URL
+
+paths:
+  /:
+    post:
+      summary: Predict visa decision timeframe
+      security:
+        - bearerAuth: [] 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                class_of_admission:
+                  type: string
+                  description: The class of admission for the visa (e.g., H-1B).
+                naics_us_code:
+                  type: string
+                  description: The NAICS US code relevant to the application.
+                naics_us_title:
+                  type: string
+                  description: Title corresponding to the NAICS US code.
+                fw_info_rel_occup_exp:
+                  type: string
+                  description: Indicates if foreign worker has related occupation experience (Y/N).
+                wage_offer_from_9089:
+                  type: number
+                  description: Wage offer from Form 9089.
+                country_of_citizenship:
+                  type: string
+                  description: Country of citizenship of the applicant.
+                employer_country:
+                  type: string
+                  description: Country of the employer.
+                employer_state:
+                  type: string
+                  description: State of the employer.
+                foreign_worker_info_education:
+                  type: string
+                  description: Education level of the foreign worker.
+                foreign_worker_info_state:
+                  type: string
+                  description: State of the foreign worker.
+                fw_info_birth_country:
+                  type: string
+                  description: Birth country of the foreign worker.
+                fw_info_req_experience:
+                  type: string
+                  description: Indicates if experience is required for the job (Y/N).
+                job_info_education:
+                  type: string
+                  description: Education level required for the job.
+                job_info_experience:
+                  type: string
+                  description: Indicates if experience is required for the job (Y/N).
+                job_info_work_state:
+                  type: string
+                  description: State where the job is located.
+                pw_amount_9089:
+                  type: string
+                  description: Prevailing wage amount from Form 9089.
+                pw_level_9089:
+                  type: string
+                  description: Prevailing wage level from Form 9089.
+                pw_soc_code:
+                  type: string
+                  description: Prevailing wage SOC code.
+                pw_soc_title:
+                  type: string
+                  description: Prevailing wage SOC title.
+              required:
+                - class_of_admission
+                - naics_us_code
+      responses:
+        '200':
+          description: Successful prediction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  upper_bound:
+                    type: number
+                    description: The upper bound of the predicted timeframe in days.
+                  value:
+                    type: number
+                    description: The predicted timeframe in days.
+                  lower_bound:
+                    type: number
+                    description: The lower bound of the predicted timeframe in days.
+        '400':
+          description: Bad Request - Invalid input data
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '500':
+          description: Internal Server Error
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

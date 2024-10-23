@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="18" name="visas">
+  <DisplayName/>
+  <Description/>
+  <CreatedAt>1729658326694</CreatedAt>
+  <LastModifiedAt>1729658326694</LastModifiedAt>
+  <BasePaths>/visas</BasePaths>
+  <Policies>
+    <Policy>JS-TransformRequest</Policy>
+    <Policy>JS-Response</Policy>
+    <Policy>VA-</Policy>
+    <Policy>J2X-</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+  <Resources>
+    <Resource>jsc://request.js</Resource>
+    <Resource>jsc://response.js</Resource>
+  </Resources>
+  <TargetEndpoints>
+    <TargetEndpoint>default</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>
