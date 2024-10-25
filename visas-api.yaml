@@ -77,8 +77,10 @@ paths:
                   type: string
                   description: Prevailing wage SOC title.
               required:
-                - class_of_admission
-                - naics_us_code
+                - pw_soc_code
+                - pw_soc_title
+                - wage_offer_from_9089
+                - fw_info_req_experience
       responses:
         '200':
           description: Successful prediction
@@ -108,4 +110,4 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      bearerFormat: JWT
+      bearerFormat: JWT 
