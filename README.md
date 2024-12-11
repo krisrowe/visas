@@ -17,3 +17,9 @@ Employs a regression model to predict how many days it will take to get a decisi
 
 # Postman Demo
 
+1. Import the .json workspace into Postman 
+2. Get an auth token to go direct to Vertex AI: `gcloud auth print-access-token`
+3. Update the bearer token in Postman
+4. Show the direct call to Vertex AI and its input and output complexity
+5. Show the direct call to Apigee and its input and output simplicity
+

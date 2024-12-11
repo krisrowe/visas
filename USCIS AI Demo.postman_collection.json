@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "b70bf5c9-3b11-46db-bb9e-f2d4fa25d7b7",
+		"name": "USCIS AI Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30066073"
+	},
+	"item": [
+		{
+			"name": "Direct to Vertex AI w/ token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ya29.a0AeDClZBoMI6QfVGMIJw7mz-wIEKbg9KcKoSbIka9jTVNAGYtaSbRznIajPhC7IOYjEdxwTkPP0HoRvrnTxqlZ3u3f4z-c2rRCYZ8J1LSl0TpAOgoPLzNG6mSwSnqjKDoyx9vmQM1_0kUJPLhc7pqKGHaRzHjOEoVZA0_v4qxk3EaXxM6aCgYKAWgSARESFQHGX2Mi603noAqMfz76r-axNtqfbg0183",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": " Bearer ya29.a0AcM612yvHBMEe0zst_E30AwrLM0G05ymmxEcRc1qWl-AgfGyuFeoWi7-TU2n_06pcqQXjG1u1ZzeUB0s0ddClZ8RVjrEs9Jqf22nXP6t_-rD4arKyfbvx97DaNo_mevRBUESm1nKzUPTGgY38iFbbNncqtT8hc81NeORif0xMYCFRlf8aCgYKAY0SARESFQHGX2MiO7_HgTzTTocvrzi6im18aA0183",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"instances\": [\n    { \"class_of_admission\": \"H-1B\", \n      \"naics_us_code\": \"541511\",\n      \"naics_us_title\": \"Custom Computer Programming Services\",\n      \"fw_info_rel_occup_exp\": \"Y\",\n      \"wage_offer_from_9089\": 128831,\n      \"country_of_citizenship\": \"INDIA\",\n      \"employer_country\": \"UNITED STATES OF AMERICA\",\n      \"employer_state\": \"CA\",\n      \"foreign_worker_info_education\": \"Bachelor's\",\n      \"foreign_worker_info_state\": \"CA\",\n      \"fw_info_birth_country\": \"INDIA\",\n      \"fw_info_req_experience\": \"Y\",\n      \"job_info_education\": \"Master's\",\n      \"job_info_experience\": \"Y\",\n      \"job_info_work_state\": \"CA\",\n      \"pw_amount_9089\": \"101,088.00\",\n      \"pw_level_9089\": \"Level II\",\n      \"pw_soc_code\": \"15-1132\",\n      \"pw_soc_title\": \"Software Developers, Applications\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-aiplatform.googleapis.com/v1/projects/753056482659/locations/us-central1/endpoints/9139793759981010944:predict",
+					"protocol": "https",
+					"host": [
+						"us-central1-aiplatform",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v1",
+						"projects",
+						"753056482659",
+						"locations",
+						"us-central1",
+						"endpoints",
+						"9139793759981010944:predict"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Thru Apigee",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"class_of_admission\": \"H-1B\", \n  \"naics_us_code\": \"541511\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://34.36.167.23.nip.io/visas",
+					"protocol": "https",
+					"host": [
+						"34",
+						"36",
+						"167",
+						"23",
+						"nip",
+						"io"
+					],
+					"path": [
+						"visas"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
